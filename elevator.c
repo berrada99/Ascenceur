@@ -1,6 +1,5 @@
 #include <time.h>
 #include <stdlib.h>
-#include <ncurses.h>
 
 #include"elevator.h"
 #include"person.h"
