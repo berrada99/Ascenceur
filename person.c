@@ -17,6 +17,15 @@ void printPerson(Person* p)
     printf("%i -> %i", p->src, p->dest);
 }
 
+PersonList* createPersonList(Person* personne)
+{
+    PersonList* personneliste = (PersonList *)malloc(sizeof(PersonList));
+    personneliste->person = personne;
+    personneliste->next   = NULL;
+
+    return personneliste; 
+}
+
 PersonList* insert(Person *p, PersonList *list)
 {
     list -> next = list;

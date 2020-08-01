@@ -12,6 +12,7 @@ typedef struct _PersonList {
 } PersonList;
 
 Person* createPerson(int src, int dest);
+PersonList* createPersonList(Person* personne);
 PersonList* insert(Person *p, PersonList *list);
 
 void printPerson(Person* p);
