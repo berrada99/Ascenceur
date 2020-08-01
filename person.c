@@ -44,6 +44,6 @@ void printListPerson(PersonList *list)
         printPerson(temp->person);
         printf(" / ");
         temp = temp->next;
-    };
+    }
 
 }

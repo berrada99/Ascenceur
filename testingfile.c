@@ -11,8 +11,6 @@
 
 void test_person()
 {
-
-
     printf("Testing the person.c file");
     Person* p1 = createPerson(1, 3);
     Person* p2 = createPerson(2, 2);
