@@ -33,7 +33,7 @@ int main()
     printf("Taille d'un pointeur à une personne : %lu\n", sizeof(Person*));
     printf("Taille d'une liste de personnes : %lu\n", sizeof(PersonList));
 
-    /*
+    
     PersonList* l1 = createPersonList(p1);
     PersonList* l2 = insert(p2, l1);
     PersonList* l3 = insert(p3, l2);
@@ -42,14 +42,14 @@ int main()
     PersonList* l6 = insert(p6, l5);
     PersonList* l7 = insert(p7, l6);
     PersonList* l8 = insert(p8, l7);
-    */
+    
 
 
     printPerson(p1);
-    pint("\n");
+    printf("\n");
     printPerson(p4);
 
 
-    //printListPerson(l1);
+    printListPerson(l1);
     return 0;
 }
