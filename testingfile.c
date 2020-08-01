@@ -9,8 +9,11 @@
 #define WIDTH 40
 #define PERSON_WIDTH 3
 
-int main()
+void test_person()
 {
+
+
+    printf("Testing the person.c file");
     Person* p1 = createPerson(1, 3);
     Person* p2 = createPerson(2, 2);
     Person* p3 = createPerson(3, 1);
@@ -48,8 +51,15 @@ int main()
     printPerson(p1);
     printf("\n");
     printPerson(p4);
+    printf("\n");
+
+    printListPerson(l8);
+    printf("\n");
+}
 
 
-    printListPerson(l1);
+int main()
+{
+    test_person();
     return 0;
 }

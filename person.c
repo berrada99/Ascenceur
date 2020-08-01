@@ -39,7 +39,7 @@ void printListPerson(PersonList *list)
 {
     PersonList* temp  = list;
 
-    while(temp->next != NULL)
+    while(temp != NULL)
     {
         printPerson(temp->person);
         printf(" / ");
