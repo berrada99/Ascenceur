@@ -12,6 +12,13 @@
 int main()
 {
     Person* p1 = createPerson(1, 3);
+    Person* p2 = createPerson(2, 2);
+    Person* p3 = createPerson(3, 1);
+    Person* p4 = createPerson(4, 0);
+    Person* p5 = createPerson(5, 2);
+    Person* p6 = createPerson(6, 3);
+    Person* p7 = createPerson(7, 2);
+    Person* p8 = createPerson(8, 1);
     printPerson(p1);
     printf("\n");
 
@@ -25,6 +32,24 @@ int main()
     printf("Taille d'une personne : %lu\n", sizeof(Person));
     printf("Taille d'un pointeur à une personne : %lu\n", sizeof(Person*));
     printf("Taille d'une liste de personnes : %lu\n", sizeof(PersonList));
-    
+
+    /*
+    PersonList* l1 = createPersonList(p1);
+    PersonList* l2 = insert(p2, l1);
+    PersonList* l3 = insert(p3, l2);
+    PersonList* l4 = insert(p4, l3);
+    PersonList* l5 = insert(p5, l4);
+    PersonList* l6 = insert(p6, l5);
+    PersonList* l7 = insert(p7, l6);
+    PersonList* l8 = insert(p8, l7);
+    */
+
+
+    printPerson(p1);
+    pint("\n");
+    printPerson(p4);
+
+
+    //printListPerson(l1);
     return 0;
 }

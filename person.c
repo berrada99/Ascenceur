@@ -28,20 +28,22 @@ PersonList* createPersonList(Person* personne)
 
 PersonList* insert(Person *p, PersonList *list)
 {
-    list -> next = list;
-    list -> person = p;
+    PersonList* temp = createPersonList(p);
+    temp -> next = list;
+    temp -> person = p;
 
-    return list;
+    return temp;
 }
 
 void printListPerson(PersonList *list)
 {
     PersonList* temp  = list;
+
     while(temp->next != NULL)
     {
         printPerson(temp->person);
         printf(" / ");
         temp = temp->next;
-    }
+    };
 
 }
