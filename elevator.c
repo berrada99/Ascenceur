@@ -99,7 +99,11 @@ void stepElevator(Building *b)
             b->waitingLists[n] = insert(exitList->person, b->waitingLists[n]);
             exitList = exitList->next;
         }
+
         //Entering Elevator
+        PersonList* enteringList = enterElevator(b->elevator, b->waitingLists[n]);
+        while(b->waitingLists[n] != NULL);
+        while(enteringList != NULL);
         
     }
     else

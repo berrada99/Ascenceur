@@ -35,6 +35,18 @@ PersonList* insert(Person *p, PersonList *list)
     return temp;
 }
 
+int length(PersonList* list)
+{
+    int i = 0;
+    PersonList* temp = list;
+    while(temp != NULL)
+    {
+        temp = temp->next;
+        i++;
+    }
+    return i;
+}
+
 void printListPerson(PersonList *list)
 {
     PersonList* temp  = list;

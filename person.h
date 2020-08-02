@@ -15,6 +15,7 @@ Person* createPerson(int src, int dest);
 PersonList* createPersonList(Person* personne);
 PersonList* insert(Person *p, PersonList *list);
 
+int length(PersonList* list);
 void printPerson(Person* p);
 void printListPerson(PersonList *list);
 
