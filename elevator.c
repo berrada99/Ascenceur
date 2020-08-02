@@ -20,11 +20,32 @@ Building *create_building(int nbFloor, Elevator *elevator, PersonList **waitingL
     Building* building = (Building*)malloc(sizeof(Building*));
     building->nbFloor = nbFloor;
     building->elevator = elevator;
-    building->waitingLists = 
+    building->waitingLists = waitingLists;
+
+    return building;
 }
 
 PersonList* exitElevator(Elevator *e);
 
 PersonList* enterElevator(Elevator *e, PersonList *list);
 
-void stepElevator(Building *b);
+void stepElevator(Building *b)
+{
+    if (b->elevator->currentFloor == b->elevator->targetFloor)
+    {
+        ;
+    }
+    else
+    {
+        int diffFloor = b->elevator->currentFloor - b->elevator->targetFloor;
+        if (diffFloor > 0)
+        {
+            b->elevator->currentFloor--; 
+        }
+        else
+        {
+            b->elevator->currentFloor++;
+        }   
+    }
+    
+}
