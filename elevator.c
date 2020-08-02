@@ -55,7 +55,7 @@ PersonList* exitElevator(Elevator *e)
 
 PersonList* enterElevator(Elevator *e, PersonList *list)
 {
-    int cpcty = e->capacity;
+    int cpcty = e->capacity - length(list);
     int i = 0;
 
     PersonList* waitingList = list;
@@ -102,8 +102,14 @@ void stepElevator(Building *b)
 
         //Entering Elevator
         PersonList* enteringList = enterElevator(b->elevator, b->waitingLists[n]);
-        while(b->waitingLists[n] != NULL);
+        while(b->waitingLists[n] != NULL)
+        {
+            b->waitingLists[n] = b->waitingLists[n]->next;
+        }
         while(enteringList != NULL);
+        {
+            b->waitingLists[n] = insert(enteringList->person, b->waitingLists[n])
+        }
         
     }
     else
