@@ -106,7 +106,7 @@ void stepElevator(Building *b)
         {
             b->waitingLists[n] = b->waitingLists[n]->next;
         }
-        while(enteringList != NULL);
+        while(enteringList != NULL)
         {
             b->waitingLists[n] = insert(enteringList->person, b->waitingLists[n]);
         }
