@@ -53,6 +53,15 @@ void test_person()
 
     printListPerson(l8);
     printf("\n");
+
+    PersonList* list = createPersonList(p1);
+    list = insert(p2, list);
+    list = insert(p3, list);
+    list = insert(p4, list);
+    list = insert(p5, list);
+
+    printListPerson(list);
+    printf("\n");
 }
 
 
