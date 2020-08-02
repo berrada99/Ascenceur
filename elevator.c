@@ -42,6 +42,7 @@ PersonList* exitElevator(Elevator *e)
         }
         
     }
+    return exitList;
 }
 
 PersonList* enterElevator(Elevator *e, PersonList *list)
