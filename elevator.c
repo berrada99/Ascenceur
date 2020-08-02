@@ -29,7 +29,7 @@ PersonList* exitElevator(Elevator *e)
 {
     PersonList* exitList;
     exitList->next = NULL;
-    
+
     PersonList* personsInE;
     personsInE->next = NULL;
 
@@ -38,13 +38,12 @@ PersonList* exitElevator(Elevator *e)
         if(e->persons->person->dest == e->currentFloor)
         {
             exitList = insert(e->persons->person, exitList);
-            e->persons = e->persons->next;
         }
         else
         {
             personsInE = insert(personsInE, personsInE);
-            e->persons = e->persons->next;
         }
+        e->persons = e->persons->next;
     }
     while(personsInE != NULL)
     {
@@ -56,7 +55,24 @@ PersonList* exitElevator(Elevator *e)
 
 PersonList* enterElevator(Elevator *e, PersonList *list)
 {
+    int cpcty = e->capacity;
+    int i = 0;
 
+    PersonList* waitingList = list;
+    while(i < cpcty && waitingList != NULL)
+    {
+        if(waitingList->person->dest != e->currentFloor)
+        {
+            e->persons = insert(waitingList->person, e->persons);
+            waitingList = waitingList->next;
+        }
+        else
+        {
+            
+        }
+        
+        i++;
+    }
 }
 
 
