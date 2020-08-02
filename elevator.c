@@ -27,10 +27,10 @@ Building *create_building(int nbFloor, Elevator *elevator, PersonList **waitingL
 
 PersonList* exitElevator(Elevator *e)
 {
-    PersonList* exitList;
+    PersonList* exitList = (PersonList*)malloc(sizeof(PersonList*));
     exitList->next = NULL;
 
-    PersonList* personsInE;
+    PersonList* personsInE = (PersonList*)malloc(sizeof(PersonList*));
     personsInE->next = NULL;
 
     while(e->persons != NULL)
@@ -41,7 +41,7 @@ PersonList* exitElevator(Elevator *e)
         }
         else
         {
-            personsInE = insert(personsInE, personsInE);
+            personsInE = insert(e->persons->person, personsInE);
         }
         e->persons = e->persons->next;
     }
@@ -59,20 +59,30 @@ PersonList* enterElevator(Elevator *e, PersonList *list)
     int i = 0;
 
     PersonList* waitingList = list;
+
+    PersonList* stayingList = (PersonList*)malloc(sizeof(PersonList*));
+    stayingList->next = NULL;
+
     while(i < cpcty && waitingList != NULL)
     {
         if(waitingList->person->dest != e->currentFloor)
         {
             e->persons = insert(waitingList->person, e->persons);
-            waitingList = waitingList->next;
         }
         else
         {
-            
+            stayingList = insert(waitingList->person, stayingList);
         }
-        
+        waitingList = waitingList->next;
         i++;
     }
+    while(waitingList != NULL)
+    {
+        stayingList = insert(waitingList->person, stayingList);
+        waitingList = waitingList->next;
+    }
+
+   return stayingList;
 }
 
 
