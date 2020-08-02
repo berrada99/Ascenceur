@@ -29,19 +29,26 @@ PersonList* exitElevator(Elevator *e)
 {
     PersonList* exitList;
     exitList->next = NULL;
-    while(e->persons != NULL)
+
+    PersonList* personsInEtemp = e->persons;
+
+    PersonList* personsInE;
+    personsInE->next = NULL;
+
+    while(personsInEtemp != NULL)
     {
-        if(e->persons->person->dest == e->currentFloor)
+        if(personsInEtemp->person->dest == e->currentFloor)
         {
-            exitList = insert(e->persons->person, exitList);
-            e->persons = e->persons->next;
+            exitList = insert(personsInEtemp->person, exitList);
+            personsInEtemp = personsInEtemp->next;
         }
         else
         {
-            e->persons = e->persons->next;
+            personsInE = insert(personsInE, personsInE);
+            personsInEtemp = personsInEtemp->next;
         }
-        
     }
+    e->persons = personsInE;
     return exitList;
 }
 
