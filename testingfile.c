@@ -64,9 +64,32 @@ void test_person()
     printf("\n");
 }
 
+void test_elevator()
+
+{
+    printf("Testing the elevator.c file\n");
+    Person* p1 = createPerson(1, 3);
+    Person* p2 = createPerson(2, 1);
+    Person* p3 = createPerson(3, 1);
+    Person* p4 = createPerson(0, 3);
+    Person* p5 = createPerson(3, 0);
+    Person* p6 = createPerson(2, 0);
+    Person* p7 = createPerson(0, 1);
+    Person* p8 = createPerson(1, 2);
+
+    PersonList* empty_list = createPersonList(NULL);
+    printListPerson(empty_list);
+
+    Elevator* elevator = create_elevator(4, 1, empty_list);
+    //Building* building = create_building(4, elevator, &list)
+
+
+}
+
 
 int main()
 {
-    test_person();
+    //test_person();
+    test_elevator();
     return 0;
 }

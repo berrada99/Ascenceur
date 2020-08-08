@@ -58,7 +58,8 @@ void DisplayBuilding(WINDOW *win, Building *b) {
 
 
 int main() {
-        srand(time(NULL));   // should only be called once
+    
+    srand(time(NULL));   // should only be called once
 
     // generate list of waiting persons
     int nbFloor = 5;
