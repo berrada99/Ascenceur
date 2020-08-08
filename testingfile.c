@@ -82,6 +82,7 @@ void test_elevator()
     printListPerson(empty_list);
 
     Elevator* elevator = create_elevator(4, 1, empty_list);
+    elevator->targetFloor = 2;
 
     PersonList* list0 = createPersonList(p4);
     PersonList* list1 = createPersonList(p1);
@@ -99,7 +100,16 @@ void test_elevator()
         printListPerson(*(waitinglist + i));
         printf("\n");
     } 
-    //Building* building = create_building(4, elevator, &list)
+    Building* building = create_building(4, elevator, waitinglist);
+
+    stepElevator(building);
+    stepElevator(building);
+
+    for (int i = 0; i < 4; i++)
+    {
+        printListPerson(*(waitinglist + i));
+        printf("\n");
+    } 
 
 
 }
