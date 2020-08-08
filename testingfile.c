@@ -77,10 +77,28 @@ void test_elevator()
     Person* p7 = createPerson(0, 1);
     Person* p8 = createPerson(1, 2);
 
-    PersonList* empty_list = createPersonList(NULL);
+    PersonList* empty_list = (PersonList *)malloc(sizeof(PersonList));; 
+    empty_list = NULL;
     printListPerson(empty_list);
 
     Elevator* elevator = create_elevator(4, 1, empty_list);
+
+    PersonList* list0 = createPersonList(p4);
+    PersonList* list1 = createPersonList(p1);
+    PersonList* list2 = createPersonList(p2);
+    PersonList* list3 = createPersonList(p3);
+
+    list0 = insert(p7, list0);
+    list1 = insert(p8, list1);
+    list2 = insert(p6, list2);
+    list3 = insert(p5, list3);
+    
+    PersonList* waitinglist[4] = {list0, list1, list2, list3};
+    for (int i = 0; i < 4; i++)
+    {
+        printListPerson(*(waitinglist + i));
+        printf("\n");
+    } 
     //Building* building = create_building(4, elevator, &list)
 
 
