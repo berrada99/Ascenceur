@@ -29,12 +29,11 @@ Building *create_building(int nbFloor, Elevator *elevator, PersonList **waitingL
 PersonList* exitElevator(Elevator *e)
 {
     PersonList* exitList = (PersonList*)malloc(sizeof(PersonList*));
-    exitList->next = NULL;
+    exitList = NULL;
 
     PersonList* personsInE = (PersonList*)malloc(sizeof(PersonList*));
-    personsInE->next = NULL;
+    personsInE = NULL;
 
-    printListPerson(e->persons);
     while(e->persons != NULL)
     {
         if(e->persons->person->dest == e->currentFloor)
@@ -57,13 +56,13 @@ PersonList* exitElevator(Elevator *e)
 
 PersonList* enterElevator(Elevator *e, PersonList *list)
 {
-    int cpcty = e->capacity - length(list);
+    int cpcty = e->capacity - length(e->persons);
     int i = 0;
 
     PersonList* waitingList = list;
 
     PersonList* stayingList = (PersonList*)malloc(sizeof(PersonList*));
-    stayingList->next = NULL;
+    stayingList = NULL;
 
     while(i < cpcty && waitingList != NULL)
     {
@@ -97,7 +96,7 @@ void stepElevator(Building *b)
         //Exiting Elevator
         
         PersonList* exitList = exitElevator(b->elevator);
-        // The problem is in exitElevator
+
         while(exitList != NULL)
         {
             b->waitingLists[n] = insert(exitList->person, b->waitingLists[n]);
@@ -105,14 +104,14 @@ void stepElevator(Building *b)
         }
 
         //Entering Elevator
-        PersonList* enteringList = enterElevator(b->elevator, b->waitingLists[n]);
+        PersonList* stayingList = enterElevator(b->elevator, b->waitingLists[n]);
         while(b->waitingLists[n] != NULL)
         {
             b->waitingLists[n] = b->waitingLists[n]->next;
         }
-        while(enteringList != NULL)
+        while(stayingList != NULL)
         {
-            b->waitingLists[n] = insert(enteringList->person, b->waitingLists[n]);
+            b->waitingLists[n] = insert(stayingList->person, b->waitingLists[n]);
         }
         
     }
