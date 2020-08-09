@@ -97,18 +97,30 @@ void test_elevator()
     PersonList* waitinglist[4] = {list0, list1, list2, list3};
     for (int i = 0; i < 4; i++)
     {
-        printListPerson(*(waitinglist + i));
-        printf("\n");
+        //printListPerson(*(waitinglist + i));
+        //printf("\n");
     } 
     Building* building = create_building(4, elevator, waitinglist);
 
-    stepElevator(building);
+    printf("Current Floor : %i\n", building->elevator->currentFloor);
     stepElevator(building);
 
     for (int i = 0; i < 4; i++)
     {
-        printListPerson(*(waitinglist + i));
-        printf("\n");
+        //printListPerson(*(building->waitingLists + i));
+        //printf("\n");
+        //printf("length of waiting list%i : %i", i, length(*(building->waitingLists + i)));
+        //printf("\n");
+    } 
+
+    printf("Current Floor : %i\n", building->elevator->currentFloor); //Stepelevator else is working 
+
+    stepElevator(building);
+
+    for (int i = 0; i < 4; i++)
+    {
+        //printListPerson(*(building->waitingLists + i));
+        //printf("\n");
     } 
 
 

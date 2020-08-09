@@ -1,5 +1,6 @@
 #include <time.h>
 #include <stdlib.h>
+#include <stdio.h> //Delete after Testing
 
 #include"elevator.h"
 #include"person.h"
@@ -33,6 +34,7 @@ PersonList* exitElevator(Elevator *e)
     PersonList* personsInE = (PersonList*)malloc(sizeof(PersonList*));
     personsInE->next = NULL;
 
+    printListPerson(e->persons);
     while(e->persons != NULL)
     {
         if(e->persons->person->dest == e->currentFloor)
@@ -94,6 +96,8 @@ void stepElevator(Building *b)
 
         //Exiting Elevator
         PersonList* exitList = exitElevator(b->elevator);
+
+        // The problem is in exitElevator
         while(exitList != NULL)
         {
             b->waitingLists[n] = insert(exitList->person, b->waitingLists[n]);
