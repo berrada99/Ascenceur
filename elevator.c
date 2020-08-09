@@ -95,8 +95,8 @@ void stepElevator(Building *b)
         int n = b->elevator->currentFloor;
 
         //Exiting Elevator
+        
         PersonList* exitList = exitElevator(b->elevator);
-
         // The problem is in exitElevator
         while(exitList != NULL)
         {
