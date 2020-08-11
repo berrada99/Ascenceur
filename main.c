@@ -82,8 +82,8 @@ int main() {
 
     // Initialize ncurse display
     initscr(); // initialize ncurses
-    noecho();// do not display in window the pressed keys
-    halfdelay(10);
+    noecho(); // do not display in window the pressed keys
+    halfdelay(50);
 
     WINDOW *win = newwin(HEIGHT, WIDTH, 0, 0);
 
