@@ -1,6 +1,6 @@
 #include <time.h>
 #include <stdlib.h>
-#include <ncurses.h>
+#include <ncurses.h> 
 
 #include "elevator.h"
 #include "person.h"
@@ -83,7 +83,7 @@ int main() {
     // Initialize ncurse display
     initscr(); // initialize ncurses
     noecho(); // do not display in window the pressed keys
-    halfdelay(50);
+    halfdelay(2);
 
     WINDOW *win = newwin(HEIGHT, WIDTH, 0, 0);
 
