@@ -6,7 +6,7 @@
 #include "person.h"
 
 #define HEIGHT 30
-#define WIDTH 40
+#define WIDTH 50
 #define PERSON_WIDTH 3
 
 void DisplayPersonList(WINDOW *win, PersonList *list, int level, int offset) {
