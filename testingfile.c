@@ -110,9 +110,7 @@ void test_elevator()
         //printf("\n");
     } 
 
-
 }
-
 
 int main()
 {
