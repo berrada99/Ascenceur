@@ -44,18 +44,17 @@ PersonList* exitElevator(Elevator *e)
         e->persons = e->persons->next;
     }
     e->persons = copyListPerson(personinE);
-    
+    printListPerson(exitList);
     return exitList;
 }
 
 PersonList* enterElevator(Elevator *e, PersonList *list)
 {
     /* Fonction d'entrée d'ascenceur */
-    PersonList* stayingList = exitElelvator(e);
+    PersonList* stayingList = exitElevator(e);
     PersonList* waitingList = list;
-    //PersonList* stayingList = createPersonList();
 
-    int cpcty = length(stayingList);
+    int cpcty = e->capacity - length(e->persons);
     int i = 0;
 
     while(i < cpcty && waitingList != NULL)
@@ -79,7 +78,6 @@ PersonList* enterElevator(Elevator *e, PersonList *list)
         stayingList = insert(waitingList->person, stayingList);
         waitingList = waitingList->next;
     }
-
    return stayingList;
 }
 
@@ -89,29 +87,9 @@ void stepElevator(Building *b)
     if (b->elevator->currentFloor == b->elevator->targetFloor)
     {
         int n = b->elevator->currentFloor;
-
-        //Exiting Elevator
-        
-        PersonList* exitList = exitElevator(b->elevator);
-
-        while(exitList != NULL)
-        {
-            b->waitingLists[n] = insert(exitList->person, b->waitingLists[n]);
-            exitList = exitList->next;
-        }
-
         //Entering Elevator
         PersonList* stayingList = enterElevator(b->elevator, b->waitingLists[n]);
-        while(b->waitingLists[n] != NULL)
-        {
-            b->waitingLists[n] = b->waitingLists[n]->next;
-        }
-        while(stayingList != NULL)
-        {
-            b->waitingLists[n] = insert(stayingList->person, b->waitingLists[n]);
-            stayingList = stayingList->next;
-        }
-        
+        b->waitingLists[n] = copyListPerson(stayingList);
     }
     else
     {
@@ -125,5 +103,4 @@ void stepElevator(Building *b)
             b->elevator->currentFloor++;
         }   
     }
-    
 }
