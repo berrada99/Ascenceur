@@ -48,6 +48,17 @@ int length(PersonList* list)
     return i;
 }
 
+PersonList* copyListPerson(PersonList* list) 
+{
+    PersonList* copy = NULL;
+    while(list != NULL)
+    {
+        copy = insert(list->person, copy);
+        list = list->next;
+    }
+    return copy;
+}
+
 void printListPerson(PersonList *list)
 {
     /* Cette fonction permet d'afficher une liste de personnes. N'a d'utilité que pour les tests */

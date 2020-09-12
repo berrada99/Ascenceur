@@ -32,43 +32,31 @@ PersonList* exitElevator(Elevator *e)
 {
     /* Fonction de sortie d'ascenceur */
     PersonList* exitList = createPersonList();
-
-    PersonList* personsInE = (PersonList*)malloc(sizeof(PersonList*));
-    personsInE = NULL;
-
+    PersonList* personinE = createPersonList();
     while(e->persons != NULL)
     {
-        /* Dans un premier temps la liste des personnes de l'ascenceur est vidée afin de séparer
-        les personnes entrantes (personsInE) et les personnes sortantes (exitList) */
         if(e->persons->person->dest == e->currentFloor)
         {
-            exitList = insert(e->persons->person, exitList);
-        }
-        else
-        {
-            personsInE = insert(e->persons->person, personsInE);
+            exitList  = insert(e->persons->person, exitList);
+        } else {
+            personinE = insert(e->persons->person, personinE);
         }
         e->persons = e->persons->next;
     }
-    while(personsInE != NULL)
-    {
-        /* Les personnes étant restée dans l'ascnenceur y sont remplacées */
-        e->persons = insert(personsInE->person, e->persons);
-        personsInE = personsInE->next;
-    }
+    e->persons = copyListPerson(personinE);
+    
     return exitList;
 }
 
 PersonList* enterElevator(Elevator *e, PersonList *list)
 {
     /* Fonction d'entrée d'ascenceur */
-    int cpcty = e->capacity - length(e->persons);
-    int i = 0;
-
+    PersonList* stayingList = exitElelvator(e);
     PersonList* waitingList = list;
+    //PersonList* stayingList = createPersonList();
 
-    PersonList* stayingList = (PersonList*)malloc(sizeof(PersonList*));
-    stayingList = NULL;
+    int cpcty = length(stayingList);
+    int i = 0;
 
     while(i < cpcty && waitingList != NULL)
     {

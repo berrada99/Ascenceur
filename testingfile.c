@@ -10,6 +10,27 @@
 #define WIDTH 40
 #define PERSON_WIDTH 3
 
+void test_copy() 
+{
+    Person* p1 = createPerson(1, 3);
+    Person* p2 = createPerson(2, 2);
+    Person* p3 = createPerson(3, 1);
+    Person* p4 = createPerson(4, 0); 
+
+    PersonList* list = insert(p1, NULL);
+    list = insert(p2, list);
+    list = insert(p3, list);
+    list = insert(p4, list);
+
+    printListPerson(list);
+    printf("\n");
+    PersonList* copy = copyListPerson(list);
+    printListPerson(copy);
+    printf("\n");
+    printListPerson(list);
+    printf("\n");
+}
+
 void test_person()
 {
     printf("Testing the person.c file");
@@ -36,7 +57,7 @@ void test_person()
     printf("Taille d'une liste de personnes : %lu\n", sizeof(PersonList));
 
     
-    PersonList* l1 = createPersonList(p1);
+    PersonList* l1 = insert(p1, NULL);
     PersonList* l2 = insert(p2, l1);
     PersonList* l3 = insert(p3, l2);
     PersonList* l4 = insert(p4, l3);
@@ -55,7 +76,7 @@ void test_person()
     printListPerson(l8);
     printf("\n");
 
-    PersonList* list = createPersonList(p1);
+    PersonList* list = insert(p1, NULL);
     list = insert(p2, list);
     list = insert(p3, list);
     list = insert(p4, list);
@@ -84,10 +105,10 @@ void test_elevator()
     Elevator* elevator = create_elevator(4, 1, empty_list);
     elevator->targetFloor = 2;
 
-    PersonList* list0 = createPersonList(p4);
-    PersonList* list1 = createPersonList(p1);
-    PersonList* list2 = createPersonList(p2);
-    PersonList* list3 = createPersonList(p3);
+    PersonList* list0 = insert(p4, NULL);
+    PersonList* list1 = insert(p1, NULL);
+    PersonList* list2 = insert(p2, NULL);
+    PersonList* list3 = insert(p3, NULL);
 
     list0 = insert(p7, list0);
     list1 = insert(p8, list1);
@@ -114,7 +135,8 @@ void test_elevator()
 
 int main()
 {
+    test_copy();
     //test_person();
-    test_elevator();
+    //test_elevator();
     return 0;
 }
