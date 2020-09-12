@@ -31,8 +31,7 @@ Building *create_building(int nbFloor, Elevator *elevator, PersonList **waitingL
 PersonList* exitElevator(Elevator *e)
 {
     /* Fonction de sortie d'ascenceur */
-    PersonList* exitList = (PersonList*)malloc(sizeof(PersonList*));
-    exitList = NULL;
+    PersonList* exitList = createPersonList();
 
     PersonList* personsInE = (PersonList*)malloc(sizeof(PersonList*));
     personsInE = NULL;
