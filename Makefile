@@ -9,7 +9,7 @@ all : $(PROG)
 	make $(PROG)
 
 $(PROG) : $(OBJ)
-	$(CC) $(PROG) -o $(OBJ) $(LDFLAGS)
+	$(CC) $(OBJ) -o $(PROG) $(LDFLAGS)
 
 person.o : person.c person.h 
 	$(CC) -c $(CFLAGS) person.c
@@ -20,7 +20,7 @@ elevator.o : elevator.c elevator.h person.h
 main.o : main.c elevator.h person.h
 	$(CC) -c $(CFLAGS)  main.c 
 
-run : main
+run : $(PROG)
 	./$(PROG)
 
 clean : 

@@ -42,10 +42,9 @@ int length(PersonList* list)
 {
     /* Fonction qui permet de trouver la longueur d'une liste de personnes */
     int i = 0;
-    PersonList* temp = list;
-    while(temp != NULL)
+    while(list != NULL)
     {
-        temp = temp->next;
+        list = list->next;
         i++;
     }
     return i;
