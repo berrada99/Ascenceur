@@ -43,7 +43,6 @@ PersonList* exitElevator(Elevator *e)
         }
         e->persons = e->persons->next;
     }
-    e->persons = copyListPerson(personinE);
     printListPerson(exitList);
     return exitList;
 }
