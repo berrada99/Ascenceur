@@ -43,7 +43,7 @@ PersonList* exitElevator(Elevator *e)
         }
         e->persons = e->persons->next;
     }
-    printListPerson(exitList);
+    e->persons = copyListPerson(personinE);
     return exitList;
 }
 
@@ -64,9 +64,7 @@ PersonList* enterElevator(Elevator *e, PersonList *list)
         {
             e->persons = insert(waitingList->person, e->persons);
             i++;
-        }
-        else
-        {
+        } else {
             stayingList = insert(waitingList->person, stayingList);
         }
         waitingList = waitingList->next;
